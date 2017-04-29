@@ -19,19 +19,20 @@
 */
 
 #include <stdlib.h>
+#include <stdint.h>
 
 int mycmp(const void* a, const void* b)
 {
-	return ((*((unsigned long*) a)) - (*((unsigned long*) b)));
+	return ((*((uint32_t*) a)) - (*((uint32_t*) b)));
 }
 
 int main()
 {
-	unsigned long nums[1000000];
-	for (unsigned long i = 0; i < 1000000; i++)
+	uint32_t nums[1000000];
+	for (uint32_t i = 0; i < 1000000; i++)
 	{
 		nums[i] = 1000000 - i;
 	}
-	qsort(nums, 1000000, sizeof(unsigned long), mycmp);
+	qsort(nums, 1000000, sizeof(uint32_t), mycmp);
 	return 0;
 }

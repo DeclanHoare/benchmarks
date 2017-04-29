@@ -15,9 +15,9 @@ The script for these benchmarks is called "sorts.sh", and on my machine
 the output is:
 
 ```
-./qsort: 1 loops, best of 100: 78.8 msec per loop
-./stdsort: 1 loops, best of 100: 111 msec per loop
+./qsort: 1 loops, best of 100: 62.8 msec per loop
+./stdsort: 1 loops, best of 100: 98.4 msec per loop
 ```
 
-Across multiple runs the general result was that std::sort took about 30
+Across multiple runs the general result was that std::sort took about 40
 milliseconds longer than qsort.

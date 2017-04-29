@@ -17,15 +17,15 @@
 // to 1 and then sort it in ascending order with std::sort
 
 #include <algorithm>
+#include <cstdint>
 
 int main()
 {
-	unsigned long nums[1000000];
-	for (unsigned long i = 0; i < 1000000; i++)
+	uint32_t nums[1000000];
+	for (uint32_t i = 0; i < 1000000; i++)
 	{
 		nums[i] = 1000000 - i;
 	}
 	std::sort(nums, nums + 1000000);
 	return 0;
 }
-
