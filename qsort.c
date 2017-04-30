@@ -29,7 +29,8 @@ int mycmp(const void* a, const void* b)
 int main()
 {
 	uint32_t nums[1000000];
-	for (uint32_t i = 0; i < 1000000; i++)
+	uint32_t i;
+	for (i = 0; i < 1000000; i++)
 	{
 		nums[i] = 1000000 - i;
 	}

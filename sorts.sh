@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 # Copyright 2017 Declan Hoare
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,8 +16,42 @@
 
 . ./tryout.sh
 
-gcc qsort.c -o qsort
-g++ stdsort.cpp -o stdsort
+echo "Compiling Tests"
 
-tryout "./qsort"
-tryout "./stdsort"
+gcc qsort.c -o qsort-gcc-64
+g++ stdsort.cpp -o stdsort-gcc-64
+
+gcc qsort.c -m32 -o qsort-gcc-32
+g++ stdsort.cpp -m32 -o stdsort-gcc-32
+
+clang qsort.c -o qsort-clang-64
+clang++ stdsort.cpp -o stdsort-clang-64 -std=c++11
+
+clang qsort.c -m32 -o qsort-clang-32
+clang++ stdsort.cpp -m32 -o stdsort-clang-32 -std=c++11
+
+wcl386 qsort.c
+mv qsort qsort-wcl-32
+
+wcl386 stdsort.cpp
+mv stdsort stdsort-wcl-32
+
+echo "64-bit C++ (Assumes 64-bit host)"
+tryout "./stdsort-gcc-64"
+tryout "./stdsort-clang-64"
+
+echo "32-bit C++"
+tryout "./stdsort-gcc-32"
+tryout "./stdsort-clang-32"
+tryout "./stdsort-wcl-32"
+
+echo "64-bit C"
+tryout "./qsort-gcc-64"
+tryout "./qsort-clang-64"
+
+echo "32-bit C"
+tryout "./qsort-gcc-32"
+tryout "./qsort-clang-32"
+tryout "./qsort-wcl-32"
+
+echo "Tests Complete"
