@@ -26,8 +26,8 @@ million integers.
 However, after finding another compiler, called Open Watcom, I decided
 to try more comprehensive tests. The new test is found in "sorts.sh" in
 this version of the repo. I had to adjust my C test program to un-inline 
-the declaration of i because WCL fails horrendously when it sees that
-syntax in a C program. It does not care in C++, however.
+the declaration of i because Open Watcom fails horrendously when it sees
+that syntax in a C program. It does not care in C++, however.
 
 NOTE: "64-bit" and "32-bit" below refer to bitnesses of x86 and the test
 assumes a host machine of x86_64 that is capable of compiling and
@@ -63,3 +63,6 @@ WCL was faster than the other compilers for 32-bit on both C and C++,
 although it does not support 64-bit at all to my knowledge. Most 
 impressively, WCL's std::sort is SIGNIFICANTLY faster than even Clang's 
 64-bit qsort.
+
+I'm using glibc for both Clang and GCC. WCL uses its own implementation
+of the standard libraries.

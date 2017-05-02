@@ -30,11 +30,9 @@ clang++ stdsort.cpp -o stdsort-clang-64 -std=c++11
 clang qsort.c -m32 -o qsort-clang-32
 clang++ stdsort.cpp -m32 -o stdsort-clang-32 -std=c++11
 
-wcl386 qsort.c
-mv qsort qsort-wcl-32
+owcc qsort.c -o qsort-wcl-32
 
-wcl386 stdsort.cpp
-mv stdsort stdsort-wcl-32
+owcc stdsort.cpp -o stdsort-wcl-32
 
 echo "64-bit C++ (Assumes 64-bit host)"
 tryout "./stdsort-gcc-64"
